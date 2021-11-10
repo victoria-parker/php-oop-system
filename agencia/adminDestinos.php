@@ -1,17 +1,22 @@
 <?php
     require 'classes/Conexion.php';
-    require 'classes/Region.php';
-    $Region=new Region();
-    $regiones=$Region->listarRegiones();
+    require 'classes/Destino.php';
+    $Destino=new Destino();
+    $destinos=$Destino->listarDestinos();
+
     include 'includes/header.php';
 ?>
     <main class="container">
-        <h1>Panel de administracion de Regiones</h1>
+        <h1>Panel de administracion de Destinos</h1>
         <table class="table table-border table-hover table-striped">
             <thead class="thead-dark">
             <tr>
                 <th>id</th>
-                <th>Region</th>
+                <th>Destino(aeropuerto)</th>
+                <th>Región</th>
+                <th>Precio</th>
+                <th>Asientos totales</th>
+                <th>Asientos disponibles</th>
                 <th colspan="2">
                     <a href="" class="btn btn-dark">Agregar</a>
                 </th>
@@ -19,16 +24,20 @@
             </thead>
             <tbody>
             <?php
-                foreach ($regiones as $region){
+                foreach ($destinos as $destino){
             ?>
             <tr>
-                <td><?=$region['regId']?></td>
-                <td><?=$region['regNombre']?></td>
+                <td><?=$destino['destId']?></td>
+                <td><?=$destino['destNombre']?></td>
+                <td><?=$destino['regId']?></td>
+                <td><?=$destino['destPrecio']?></td>
+                <td><?=$destino['destAsientos']?></td>
+                <td><?=$destino['destDisponibles']?></td>
                 <td><a href="" class="btn btn-outline-secondary">Modificar</a></td>
                 <td><a href="" class="btn btn-outline-secondary">Eliminar</a></td>
             </tr>
             <?php
-            }
+                }
             ?>
             </tbody>
         </table>
