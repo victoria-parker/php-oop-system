@@ -13,7 +13,7 @@
                 <th>id</th>
                 <th>Region</th>
                 <th colspan="2">
-                    <a href="" class="btn btn-dark">Agregar</a>
+                    <a href="formAgregarRegion.php" class="btn btn-dark">Agregar</a>
                 </th>
             </tr>
             </thead>

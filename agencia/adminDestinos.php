@@ -18,7 +18,7 @@
                 <th>Asientos totales</th>
                 <th>Asientos disponibles</th>
                 <th colspan="2">
-                    <a href="" class="btn btn-dark">Agregar</a>
+                    <a href="formAgregarDestino.php" class="btn btn-dark">Agregar</a>
                 </th>
             </tr>
             </thead>
