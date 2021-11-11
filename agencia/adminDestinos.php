@@ -29,7 +29,7 @@
             <tr>
                 <td><?=$destino['destId']?></td>
                 <td><?=$destino['destNombre']?></td>
-                <td><?=$destino['regId']?></td>
+                <td><?=$destino['regNombre']?></td>
                 <td><?=$destino['destPrecio']?></td>
                 <td><?=$destino['destAsientos']?></td>
                 <td><?=$destino['destDisponibles']?></td>

@@ -11,7 +11,12 @@ class Destino{
     public function listarDestinos(){
         $link=Conexion::conectar();
 
-        $sql="SELECT destId,destNombre,regId,destPrecio,destAsientos, destDisponibles,destActivo FROM destinos";
+        $sql="SELECT destId,destNombre,
+                     d.regId, r.regNombre,
+                     destPrecio,destAsientos, 
+                     destDisponibles,destActivo 
+                     FROM destinos d, regiones r
+                     WHERE d.regId=r.regId";
 
         $stmt=$link->prepare($sql);
         $stmt->execute();
