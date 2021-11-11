@@ -24,8 +24,8 @@
             <tr>
                 <td><?=$region['regId']?></td>
                 <td><?=$region['regNombre']?></td>
-                <td><a href="" class="btn btn-outline-secondary">Modificar</a></td>
-                <td><a href="" class="btn btn-outline-secondary">Eliminar</a></td>
+                <td><a href="formModificarRegion.php?regId=<?=$region['regId']?>" class="btn btn-outline-secondary">Modificar</a></td>
+                <td><a href="formEliminarRegion.php?regId=<?=$region['regId']?>" class="btn btn-outline-secondary">Eliminar</a></td>
             </tr>
             <?php
             }

@@ -7,6 +7,7 @@ class Region{
     public function listarRegiones(){
 
         $link=Conexion::conectar();
+
         $sql="SELECT regId,regNombre FROM regiones";
 
         $stmt=$link->prepare($sql);
@@ -17,6 +18,21 @@ class Region{
         return $regiones;
     }
 
+    public function verRegionPorId(){
+        $link=Conexion::conectar();
+        $regId=$_GET['regId'];
+
+        $sql="SELECT regId,regNombre FROM regiones WHERE regId=".$regId;
+
+        $stmt=$link->prepare($sql);
+
+        $stmt->execute();
+        $datosRegion=$stmt->fetch(PDO::FETCH_ASSOC);
+
+        $this->setRegId($datosRegion['regId']);
+        $this->setRegNombre($datosRegion['regNombre']);
+        return $stmt;
+    }
 
     /**
      * @return mixed
