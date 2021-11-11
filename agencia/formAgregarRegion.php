@@ -13,7 +13,7 @@
                 <div class="form-group">
                     <label for="regNombre">Nombre de la región:</label>
                     <input type="text" name="regNombre"
-                           id="regNombre" class="form-control">
+                           id="regNombre" class="form-control" required>
                 </div>
 
                 <button class="btn btn-dark">Agregar</button>

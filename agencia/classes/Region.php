@@ -34,6 +34,29 @@ class Region{
         return $stmt;
     }
 
+    public function modificarRegion()
+    {
+        $link=Conexion::conectar();
+        $regId=$_POST['regId'];
+        $regNombre=$_POST['regNombre'];
+
+        $sql="UPDATE regiones SET regNombre= :regNombre WHERE regId= :regId ";
+
+        $stmt=$link->prepare($sql);
+
+        //Data binding
+        $stmt->bindParam(":regNombre",$regNombre,PDO::PARAM_STR);
+        $stmt->bindParam(":regId",$regId,PDO::PARAM_INT);
+
+        if($stmt->execute()){
+            $this->setRegId($regId);
+            $this->setRegNombre($regNombre);
+            return true;
+        }
+        return false;
+
+    }
+
     /**
      * @return mixed
      */
