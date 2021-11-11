@@ -18,7 +18,7 @@
                     <input type="text" name="regNombre"
                            id="regNombre" class="form-control" value="<?=$Region->getRegNombre()?>">
                 </div>
-
+                <input type="hidden" name="regId" value="<?=$Region->getRegId()?>" >
                 <button class="btn btn-dark">Modificar</button>
                 <a href="adminRegiones.php" class="btn btn-outline-secondary">
                     Volver a panel de regiones
