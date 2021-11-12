@@ -57,6 +57,24 @@ class Region{
 
     }
 
+    public function agregarRegion(){
+        $link=Conexion::conectar();
+        $regNombre=$_POST['regNombre'];
+
+        $sql="INSERT INTO regiones SET regNombre= :regNombre";
+
+        $stmt=$link->prepare($sql);
+
+        $stmt->bindParam(":regNombre",$regNombre,PDO::PARAM_STR);
+
+        if($stmt->execute()){
+            $this->setRegNombre($regNombre);
+            $this->setRegId($link->lastInsertId());
+            return true;
+        }
+        return false;
+    }
+
     /**
      * @return mixed
      */
