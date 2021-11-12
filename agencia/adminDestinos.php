@@ -33,7 +33,7 @@
                 <td><?=$destino['destPrecio']?></td>
                 <td><?=$destino['destAsientos']?></td>
                 <td><?=$destino['destDisponibles']?></td>
-                <td><a href="" class="btn btn-outline-secondary">Modificar</a></td>
+                <td><a href="formModificarDestino.php?destId=<?=$destino['destId']?>" class="btn btn-outline-secondary">Modificar</a></td>
                 <td><a href="" class="btn btn-outline-secondary">Eliminar</a></td>
             </tr>
             <?php

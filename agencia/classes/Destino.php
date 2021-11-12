@@ -3,9 +3,10 @@ class Destino{
     private $destId;
     private $destNombre;
     private $regId;
+    protected $regNombre;
     private $destPrecio;
     private $destAsientos;
-    private $destDisponible;
+    private $destDisponibles;
     private $destActivo;
 
     public function listarDestinos(){
@@ -25,6 +26,36 @@ class Destino{
         return $destinos;
     }
 
+    public function verDestinoPorId()
+    {
+        $destId=$_GET['destId'];
+        $link=Conexion::conectar();
+
+        $sql="SELECT destId,destNombre,
+                     d.regId, r.regNombre,
+                     destPrecio,destAsientos, 
+                     destDisponibles,destActivo 
+                     FROM destinos d, regiones r
+                     WHERE d.regId=r.regId AND destId= :destId";
+
+        $stmt=$link->prepare($sql);
+
+        $stmt->bindParam(":destId",$destId,PDO::PARAM_INT);
+
+        if($stmt->execute()){
+            $destino=$stmt->fetch();//me devuelve un array asociativo
+            $this->setDestId($destId);
+            $this->setDestNombre($destino['destNombre']);
+            $this->setRegId($destino['regId']);
+            $this->setRegNombre($destino['regNombre']);
+            $this->setDestPrecio($destino['destPrecio']);
+            $this->setDestAsientos($destino['destAsientos']);
+            $this->setDestDisponibles($destino['destDisponibles']);
+            $this->setDestActivo(1);
+            return true;
+        }
+        return false;
+    }
     /**
      * @return mixed
      */
@@ -108,17 +139,17 @@ class Destino{
     /**
      * @return mixed
      */
-    public function getDestDisponible()
+    public function getDestDisponibles()
     {
-        return $this->destDisponible;
+        return $this->destDisponibles;
     }
 
     /**
-     * @param mixed $destDisponoble
+     * @param mixed $destDisponobles
      */
-    public function setDestDisponible($destDisponible): void
+    public function setDestDisponibles($destDisponibles): void
     {
-        $this->destDisponible = $destDisponible;
+        $this->destDisponibles = $destDisponibles;
     }
 
     /**
@@ -136,5 +167,19 @@ class Destino{
     {
         $this->destActivo = $destActivo;
     }
+    /**
+     * @return mixed
+     */
+    public function getRegNombre()
+    {
+        return $this->regNombre;
+    }
 
+    /**
+     * @param mixed $regNombre
+     */
+    public function setRegNombre($regNombre): void
+    {
+        $this->regNombre = $regNombre;
+    }
 }
