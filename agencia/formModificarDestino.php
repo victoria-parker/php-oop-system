@@ -1,9 +1,7 @@
 <?php
-    require 'classes/Conexion.php';
-    require 'classes/Region.php';
+require 'config/config.php';
     $Region=new Region;
     $regiones=$Region->listarRegiones();
-    require 'classes/Destino.php';
     $Destino=new Destino;
     $Destino->verDestinoPorId();
     include 'includes/header.php';

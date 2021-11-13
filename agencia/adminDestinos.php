@@ -1,6 +1,5 @@
 <?php
-    require 'classes/Conexion.php';
-    require 'classes/Destino.php';
+    require 'config/config.php';
     $Destino=new Destino();
     $destinos=$Destino->listarDestinos();
 

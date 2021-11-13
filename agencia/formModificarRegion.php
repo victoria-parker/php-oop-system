@@ -1,6 +1,5 @@
 <?php
-    require 'classes/Conexion.php';
-    require 'classes/Region.php';
+    require 'config/config.php';
     $Region= new Region();
     $Region->verRegionPorId();
     include 'includes/header.php';

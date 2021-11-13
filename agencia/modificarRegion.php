@@ -1,6 +1,5 @@
 <?php
-    require 'classes/Conexion.php';
-    require 'classes/Region.php';
+    require 'config/config.php';
     $Region=new Region;
     $chequeo=$Region->modificarRegion();
     $css='danger';

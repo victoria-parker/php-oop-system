@@ -1,4 +1,5 @@
 <?php
+    require 'config/config.php';
     include 'includes/header.php';
 ?>
     <main class="container">
