@@ -13,8 +13,8 @@
             Contraseña:
             <br>
             <input type="password" name="usuClave" class="form-control">
-            <br>
-            <button class="btn btn-dark btn-block">Ingresar a sistema</button>
+
+            <button class="btn btn-dark btn-block my-3">Ingresar a sistema</button>
         </form>
         </div>
     </main>
