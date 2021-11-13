@@ -29,7 +29,7 @@ class Usuario
             $datosUsuario=$stmt->fetch(PDO::FETCH_ASSOC);
             $usuNombre=$datosUsuario['usuNombre'];
             //redireccion admin
-            header(location: admin.php);
+            header('location: admin.php');
 
         }
 
@@ -37,7 +37,8 @@ class Usuario
 
     public function logout()
     {
-        
+        session_destroy();
+        header('location: formLogin.php');
     }
 
     public function autenticar()
