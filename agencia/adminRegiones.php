@@ -2,6 +2,8 @@
     require 'config/config.php';
     $Region=new Region();
     $regiones=$Region->listarRegiones();
+    $Usuario=new Usuario;
+    $Usuario->autenticar();
     include 'includes/header.php';
 ?>
     <main class="container">

@@ -19,11 +19,18 @@
         </div>
         <?php
         if(isset($_GET['error'])){
+            $error=$_GET['error'];
+            $titulo='Error de ingreso';
+            $mensaje='Nombre y/o clave incorrectos';
+            if($error == 2){
+                $titulo='Acceso no permitido';
+                $mensaje='Debe loguearse primero';
+            }
         ?>
         <script>
             Swal.fire(
-                'Error de logueo',
-                'usuario y/o clave incorrectos',
+                '<?=$titulo?>',
+                '<?=$mensaje?>',
                 'error'
             );
         </script>

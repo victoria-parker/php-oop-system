@@ -1,5 +1,7 @@
 <?php
     require 'config/config.php';
+    $Usuario=new Usuario;
+    $Usuario->autenticar();
     include 'includes/header.php';
 ?>
 

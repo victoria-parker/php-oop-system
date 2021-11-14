@@ -2,7 +2,8 @@
     require 'config/config.php';
     $Destino=new Destino();
     $destinos=$Destino->listarDestinos();
-
+    $Usuario=new Usuario;
+    $Usuario->autenticar();
     include 'includes/header.php';
 ?>
     <main class="container">

@@ -1,5 +1,7 @@
 <?php
 require 'config/config.php';
+    $Usuario=new Usuario;
+    $Usuario->autenticar();
     $Region=new Region;
     $regiones=$Region->listarRegiones();
     $Destino=new Destino;

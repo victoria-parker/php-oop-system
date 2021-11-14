@@ -1,5 +1,7 @@
 <?php
     require 'config/config.php';
+    $Usuario=new Usuario;
+    $Usuario->autenticar();
     $Destino=new Destino;
     $chequeo=$Destino->agregarDestino();
     $css='danger';

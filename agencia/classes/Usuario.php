@@ -44,7 +44,7 @@ class Usuario
     public function autenticar()
     {
         if(!isset($_SESSION['login'])){
-            header('location :formLogin.php?error=1');
+            header('location: formLogin.php?error=2');
         }
     }
 }
