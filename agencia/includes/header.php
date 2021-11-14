@@ -23,7 +23,19 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link" href="admin.php">Inicio</a>
+                    <?php
+                    //si esta logueado
+                    if(isset($_SESSION['login'])){
+                    ?>
+                    <a class="nav-item nav-link" href="logout.php">Logout</a>
+                        <?php
+                        //si no esta logueado
+                    }else{
+                    ?>
                     <a class="nav-item nav-link" href="formLogin.php">Login</a>
+                    <?php
+                    }
+                    ?>
                     <a class="nav-item nav-link" href="adminRegiones.php">Regiones</a>
                     <a class="nav-item nav-link" href="adminDestinos.php">Destinos</a>
                 </div>
