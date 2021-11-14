@@ -1,14 +1,14 @@
 <?php
 
 class Region{
-    private $regId;
+    private $regID;
     private $regNombre;
 
     public function listarRegiones(){
 
         $link=Conexion::conectar();
 
-        $sql="SELECT regId,regNombre FROM regiones";
+        $sql="SELECT regID,regNombre FROM regiones";
 
         $stmt=$link->prepare($sql);
         $stmt->execute();
@@ -20,16 +20,16 @@ class Region{
 
     public function verRegionPorId(){
         $link=Conexion::conectar();
-        $regId=$_GET['regId'];
+        $regID=$_GET['regID'];
 
-        $sql="SELECT regId,regNombre FROM regiones WHERE regId=".$regId;
+        $sql="SELECT regID,regNombre FROM regiones WHERE regID=".$regID;
 
         $stmt=$link->prepare($sql);
 
         $stmt->execute();
         $datosRegion=$stmt->fetch(PDO::FETCH_ASSOC);
 
-        $this->setRegId($datosRegion['regId']);
+        $this->setRegID($datosRegion['regID']);
         $this->setRegNombre($datosRegion['regNombre']);
         return $stmt;
     }
@@ -37,19 +37,19 @@ class Region{
     public function modificarRegion()
     {
         $link=Conexion::conectar();
-        $regId=$_POST['regId'];
+        $regID=$_POST['regID'];
         $regNombre=$_POST['regNombre'];
 
-        $sql="UPDATE regiones SET regNombre= :regNombre WHERE regId= :regId ";
+        $sql="UPDATE regiones SET regNombre= :regNombre WHERE regID= :regID ";
 
         $stmt=$link->prepare($sql);
 
         //Data binding
         $stmt->bindParam(":regNombre",$regNombre,PDO::PARAM_STR);
-        $stmt->bindParam(":regId",$regId,PDO::PARAM_INT);
+        $stmt->bindParam(":regID",$regID,PDO::PARAM_INT);
 
         if($stmt->execute()){
-            $this->setRegId($regId);
+            $this->setRegID($regID);
             $this->setRegNombre($regNombre);
             return true;
         }
@@ -69,7 +69,7 @@ class Region{
 
         if($stmt->execute()){
             $this->setRegNombre($regNombre);
-            $this->setRegId($link->lastInsertId());
+            $this->setRegID($link->lastInsertId());
             return true;
         }
         return false;
@@ -78,17 +78,17 @@ class Region{
     /**
      * @return mixed
      */
-    public function getRegId()
+    public function getRegID()
     {
-        return $this->regId;
+        return $this->regID;
     }
 
     /**
-     * @param mixed $regId
+     * @param mixed $regID
      */
-    public function setRegId($regId): void //void es que no retorna nada
+    public function setRegID($regID): void //void es que no retorna nada
     {
-        $this->regId = $regId;
+        $this->regID = $regID;
     }
 
     /**

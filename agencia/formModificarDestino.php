@@ -26,11 +26,11 @@ require 'config/config.php';
                     <label for="regID">Región</label>
                     <select name="regID" id="regID"
                             class="form-control" required>
-                        <option value="<?=$Destino->getRegId()?>"><?=$Destino->getRegNombre()?></option>
+                        <option value="<?=$Destino->getRegID()?>"><?=$Destino->getRegNombre()?></option>
                         <?php
                             foreach ($regiones as $region){
                         ?>
-                            <option value="<?=$region['regId']?>"><?=$region['regNombre']?></option>
+                            <option value="<?=$region['regID']?>"><?=$region['regNombre']?></option>
                         <?php
                             }
                         ?>

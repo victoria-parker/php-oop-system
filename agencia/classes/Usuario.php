@@ -27,7 +27,7 @@ class Usuario
         }else{
             $_SESSION['login']=1;
             $datosUsuario=$stmt->fetch(PDO::FETCH_ASSOC);
-            $usuNombre=$datosUsuario['usuNombre'];
+            $_SESSION['usuNombre']=$datosUsuario['usuNombre'];
             //redireccion admin
             header('location: admin.php');
 
@@ -43,6 +43,8 @@ class Usuario
 
     public function autenticar()
     {
-        
+        if(!isset($_SESSION['login'])){
+            header('location :formLogin.php?error=1');
+        }
     }
 }

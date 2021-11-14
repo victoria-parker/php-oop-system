@@ -8,7 +8,7 @@
     if($chequeo){
         $css='success';
         $mensaje='Región: '.$Region->getRegNombre().' agregada correctamente';
-        $mensaje.=' con el id:'.$Region->getRegId();
+        $mensaje.=' con el id:'.$Region->getRegID();
     }
     include 'includes/header.php';
 ?>

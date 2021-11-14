@@ -2,7 +2,7 @@
 class Destino{
     private $destId;
     private $destNombre;
-    private $regId;
+    private $regID;
     protected $regNombre;
     private $destPrecio;
     private $destAsientos;
@@ -13,11 +13,11 @@ class Destino{
         $link=Conexion::conectar();
 
         $sql="SELECT destId,destNombre,
-                     d.regId, r.regNombre,
+                     d.regID, r.regNombre,
                      destPrecio,destAsientos, 
                      destDisponibles,destActivo 
                      FROM destinos d, regiones r
-                     WHERE d.regId=r.regId";
+                     WHERE d.regID=r.regID";
 
         $stmt=$link->prepare($sql);
         $stmt->execute();
@@ -32,11 +32,11 @@ class Destino{
         $link=Conexion::conectar();
 
         $sql="SELECT destId,destNombre,
-                     d.regId, r.regNombre,
+                     d.regID, r.regNombre,
                      destPrecio,destAsientos, 
                      destDisponibles,destActivo 
                      FROM destinos d, regiones r
-                     WHERE d.regId=r.regId AND destId= :destId";
+                     WHERE d.regID=r.regID AND destId= :destId";
 
         $stmt=$link->prepare($sql);
 
@@ -46,7 +46,7 @@ class Destino{
             $destino=$stmt->fetch();//me devuelve un array asociativo
             $this->setDestId($destId);
             $this->setDestNombre($destino['destNombre']);
-            $this->setRegId($destino['regId']);
+            $this->setRegID($destino['regID']);
             $this->setRegNombre($destino['regNombre']);
             $this->setDestPrecio($destino['destPrecio']);
             $this->setDestAsientos($destino['destAsientos']);
@@ -56,6 +56,41 @@ class Destino{
         }
         return false;
     }
+
+    public function agregarDestino()
+    {
+        $destNombre=$_POST['destNombre'];
+        $regID=$_POST['regID'];
+        $destPrecio=$_POST['destPrecio'];
+        $destAsientos=$_POST['destAsientos'];
+        $destDisponibles=$_POST['destDisponibles'];
+
+        $link=Conexion::conectar();
+
+        $sql="INSERT INTO destinos SET
+              destNombre= :destNombre,
+              regID= :regID,
+              destPrecio= :destPrecio,
+              destAsientos= :destAsientos,
+              destDisponibles= :destDisponibles;";
+
+        $stmt=$link->prepare($sql);
+
+        $stmt->bindParam(':destNombre', $destNombre,PDO::PARAM_STR);
+        $stmt->bindParam(':regID',$regID,PDO::PARAM_INT);
+        $stmt->bindParam(':destPrecio',$destPrecio,PDO::PARAM_INT);
+        $stmt->bindParam(':destAsientos',$destAsientos,PDO::PARAM_INT);
+        $stmt->bindParam(':destDisponibles',$destDisponibles,PDO::PARAM_INT);
+
+        if($stmt->execute()){
+            $this->setDestNombre($destNombre);
+            $this->setDestId($link->lastInsertId());
+            return true;
+        }
+        return false;
+    }
+
+
     /**
      * @return mixed
      */
@@ -91,17 +126,17 @@ class Destino{
     /**
      * @return mixed
      */
-    public function getRegId()
+    public function getRegID()
     {
-        return $this->regId;
+        return $this->regID;
     }
 
     /**
-     * @param mixed $regId
+     * @param mixed $regID
      */
-    public function setRegId($regId): void
+    public function setRegID($regID): void
     {
-        $this->regId = $regId;
+        $this->regID = $regID;
     }
 
     /**

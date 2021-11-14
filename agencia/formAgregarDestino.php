@@ -27,7 +27,7 @@
                         <?php
                             foreach ($regiones as $region){
                         ?>
-                            <option value="<?=$region['regId']?>"><?=$region['regNombre']?></option>
+                            <option value="<?=$region['regID']?>"><?=$region['regNombre']?></option>
                         <?php
                             }
                         ?>
