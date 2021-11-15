@@ -85,6 +85,11 @@ class Destino{
         if($stmt->execute()){
             $this->setDestNombre($destNombre);
             $this->setDestId($link->lastInsertId());
+            $this->setRegID($regID);
+            $this->setDestPrecio($destPrecio);
+            $this->setDestAsientos($destAsientos);
+            $this->setDestDisponibles($destDisponibles);
+            $this->setDestActivo(1);//default
             return true;
         }
         return false;
