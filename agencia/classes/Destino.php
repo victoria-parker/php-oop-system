@@ -95,6 +95,51 @@ class Destino{
         return false;
     }
 
+    public function modificarDestino()
+    {
+        $destId=$_POST['destId'];
+        $destNombre=$_POST['destNombre'];
+        $regID=$_POST['regID'];
+        $destPrecio=$_POST['destPrecio'];
+        $destAsientos=$_POST['destAsientos'];
+        $destDisponibles=$_POST['destDisponibles'];
+
+        $link=Conexion::conectar();
+
+        $sql="UPDATE destinos SET 
+                                        destNombre= :destNombre,
+                                        regID= :regID,
+                                        destPrecio= :destPrecio,
+                                        destAsientos= :destAsientos,
+                                        destDisponibles= :destDisponibles
+              WHERE destId= :destId;";
+
+        $stmt=$link->prepare($sql);
+
+        $stmt->bindParam(':destNombre', $destNombre,PDO::PARAM_STR);
+        $stmt->bindParam(':regID',$regID,PDO::PARAM_INT);
+        $stmt->bindParam(':destPrecio',$destPrecio,PDO::PARAM_INT);
+        $stmt->bindParam(':destAsientos',$destAsientos,PDO::PARAM_INT);
+        $stmt->bindParam(':destDisponibles',$destDisponibles,PDO::PARAM_INT);
+        $stmt->bindParam(':destId',$destId,PDO::PARAM_INT);
+
+        if($stmt->execute()){
+            $this->setDestNombre($destNombre);
+            $this->setDestId($destId);
+            $this->setRegID($regID);
+            $this->setDestPrecio($destPrecio);
+            $this->setDestAsientos($destAsientos);
+            $this->setDestDisponibles($destDisponibles);
+            $this->setDestActivo(1);//default
+            return true;
+        }
+        return false;
+
+
+
+
+    }
+
 
     /**
      * @return mixed
