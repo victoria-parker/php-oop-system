@@ -134,9 +134,27 @@ class Destino{
             return true;
         }
         return false;
+    }
 
+    public function eliminarDestino()
+    {
+        $destId=$_POST['destId'];
+        $destNombre=$_POST['destNombre'];
 
+        $link=Conexion::conectar();
 
+        $sql="DELETE FROM destinos WHERE destId= :destId";
+
+        $stmt=$link->prepare($sql);
+
+        $stmt->bindParam(':destId', $destId,PDO::PARAM_INT);
+
+        if($stmt->execute()){
+            $this->setDestNombre($destNombre);
+            $this->setDestId($destId);
+            return $this;
+        }
+        return false;
 
     }
 
