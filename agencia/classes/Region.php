@@ -75,6 +75,40 @@ class Region{
         return false;
     }
 
+    public function verificarRegion()
+    {
+        $regID=$_GET['regID'];
+        $this->verRegionPorId();
+        $link=Conexion::conectar();
+
+        $sql="SELECT 1 FROM destinos WHERE regID = :regID";
+
+        $stmt=$link->prepare($sql);
+        $stmt->bindParam(':regID',$regID,PDO::PARAM_INT);
+        $stmt->execute();
+
+        $cantidad=$stmt->rowCount();
+        return $cantidad;
+    }
+    public function eliminarRegion()
+    {
+        $regID=$_POST['regID'];
+        $regNombre=$_POST['regNombre'];
+        $link=Conexion::conectar();
+
+        $sql="DELETE FROM regiones WHERE regID= :regID";
+
+        $stmt=$link->prepare($sql);
+        $stmt->bindParam(':regID',$regID,PDO::PARAM_INT);
+
+        if($stmt->execute()){
+            $this->setRegID($regID);
+            $this->setRegNombre($regNombre);
+            return $this;
+        }
+        return false;
+
+    }
     /**
      * @return mixed
      */
